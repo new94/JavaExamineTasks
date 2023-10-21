@@ -29,7 +29,11 @@ class Task1Test extends Infrastructure {
                         + "&redisHost=" + redis.getHost()
                         + "&redisPort=" + redis.getFirstMappedPort()
                         + "&mongoConnectionString=" + mongoDBContainer.getConnectionString()
-                        + "&mongoDatabase=mongo_test_db&mongoCollection=mongo_test_collection"))
+                        + "&mongoDatabase=mongo_test_db&mongoCollection=mongo_test_collection"
+                        + "&postgreSQLJdbcUrl=" + postgreSQL.getJdbcUrl()
+                        + "&postgreSQLUsername=" + postgreSQL.getUsername()
+                        + "&postgreSQLPassword=" + postgreSQL.getPassword()
+                        + "&postgreSQLDriverClassName=" + postgreSQL.getDriverClassName()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string("kafka:" + kafka.getBootstrapServers() + ";\n" +
